@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Kreu",
+    "about": "Rreth Me",
+    "skills": "Aftësitë",
+    "projects": "Projektet",
+    "certifications": "Certifikimet",
+    "badges": "Badge-et",
+    "cv": "CV",
+    "contact": "Kontakti"
+  },
+  "hero": {
+    "title": "Adi Memeti",
+    "subtitle": "Data Scientist",
+    "description": "Inxhinier i apasionuar i specializuar në Machine Learning, Analitikën e të Dhënave dhe Zhvillimin e Softuerit. I përkushtuar për të zgjidhur probleme komplekse përmes njohurive të të dhënave dhe zgjidhjeve inovative të AI.",
+    "cta_primary": "Shih Punën Time",
+    "cta_secondary": "Shkarko CV-në"
+  },
+  "about": {
+    "title": "Rreth Me",
+    "title_span": "Me",
+    "description": "Jam një inxhinier i përkushtuar i softuerit dhe të dhënave me një bazë të fortë në AI dhe Machine Learning. Ekspertiza ime përfshin të gjithë procesin e të dhënave, nga pastrimi dhe analiza eksploruese deri në ndërtimin dhe implementimin e modeleve parashikuese. Jam i përkushtuar në mësimin e vazhdueshëm dhe aplikimin e aftësive teknike për të krijuar aplikacione me ndikim në botën reale."
+  },
+  "skills": {
+    "title": "Aftësitë Teknike",
+    "title_span": "Aftësitë",
+    "categories": {
+      "programming": {
+        "title": "Programimi",
+        "items": ["Python", "SQL"]
+      },
+      "data_science": {
+        "title": "Shkenca e të Dhënave",
+        "items": ["Pandas", "NumPy", "Scikit-learn"]
+      },
+      "machine_learning": {
+        "title": "Machine Learning",
+        "items": ["Regresioni", "Klasifikimi", "Inxhinieria e Veçorive", "Vlerësimi i Modelit"]
+      },
+      "data_analytics": {
+        "title": "Analitika e të Dhënave",
+        "items": ["Power BI", "SQL", "Pastrimi i të Dhënave", "EDA"]
+      },
+      "tools": {
+        "title": "Veglat",
+        "items": ["Git", "GitHub", "VS Code"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Projektet e Veçuara",
+    "title_span": "Projektet",
+    "placeholder_desc": "Përshkrimi i projektit bazuar në implementimin teknik dhe rezultatet.",
+    "view_github": "Shih në GitHub",
+    "live_demo": "Demo Live"
+  },
+  "certifications": {
+    "title": "Certifikimet",
+    "title_span": "Certifikimet",
+    "verify": "Verifiko Certifikatën"
+  },
+  "badges": {
+    "title": "Badge-et Profesionale",
+    "title_span": "Badge-et",
+    "verify": "Shih Badge-in"
+  },
+  "cv": {
+    "title": "Curriculum Vitae",
+    "title_span": "Vitae",
+    "description": "Shkarkoni CV-në time profesionale në gjuhën tuaj të preferuar.",
+    "download": "Shkarko PDF",
+    "view": "Shih PDF",
+    "en": "CV në Anglisht",
+    "sq": "CV në Shqip"
+  },
+  "contact": {
+    "title": "Na Kontaktoni",
+    "title_span": "Kontakti",
+    "description": "Jam gjithmonë i hapur për të diskutuar mundësi të reja, bashkëpunime ose sfida teknike.",
+    "email": "Më dërgoni Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "copyright": "© 2026 Adi Memeti. Të gjitha të drejtat e rezervuara.",
+    "text": "Ndërtuar me pasion për Shkencën e të Dhënave dhe AI."
+  }
+}

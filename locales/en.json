@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "badges": "Badges",
+    "cv": "CV",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Adi Memeti",
+    "subtitle": "Data Scientist",
+    "description": "Passionate engineer specializing in Machine Learning, Data Analytics, and Software Development. Dedicated to solving complex problems with data-driven insights and innovative AI solutions.",
+    "cta_primary": "View My Work",
+    "cta_secondary": "Download CV"
+  },
+  "about": {
+    "title": "About Me",
+    "title_span": "Me",
+    "description": "I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning."
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "title_span": "Skills",
+    "categories": {
+      "programming": {
+        "title": "Programming",
+        "items": ["Python", "SQL"]
+      },
+      "data_science": {
+        "title": "Data Science",
+        "items": ["Pandas", "NumPy", "Scikit-learn"]
+      },
+      "machine_learning": {
+        "title": "Machine Learning",
+        "items": ["Regression", "Classification", "Feature Engineering", "Model Evaluation"]
+      },
+      "data_analytics": {
+        "title": "Data Analytics",
+        "items": ["Power BI", "SQL", "Data Cleaning", "EDA"]
+      },
+      "tools": {
+        "title": "Tools",
+        "items": ["Git", "GitHub", "VS Code"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "title_span": "Projects",
+    "placeholder_desc": "Project description based on technical implementation and results.",
+    "view_github": "View on GitHub",
+    "live_demo": "Live Demo"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "title_span": "Certifications",
+    "verify": "Verify Credential"
+  },
+  "badges": {
+    "title": "Professional Badges",
+    "title_span": "Badges",
+    "verify": "View Badge"
+  },
+  "cv": {
+    "title": "Curriculum Vitae",
+    "title_span": "Vitae",
+    "description": "Download my professional CV in your preferred language.",
+    "download": "Download PDF",
+    "view": "View PDF",
+    "en": "English CV",
+    "sq": "Albanian CV"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "title_span": "Touch",
+    "description": "I'm always open to discussing new opportunities, collaborations, or technical challenges.",
+    "email": "Email Me",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "copyright": "© 2026 Adi Memeti. All rights reserved.",
+    "text": "Built with passion for Data Science and AI."
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我",
+    "skills": "技能",
+    "projects": "项目",
+    "certifications": "证书",
+    "badges": "徽章",
+    "cv": "简历",
+    "contact": "联系我"
+  },
+  "hero": {
+    "title": "Adi Memeti",
+    "subtitle": "数据科学家",
+    "description": "一名专注于机器学习、数据分析和软件开发的工程师。致力于通过数据驱动的洞察和创新的 AI 解决方案来解决复杂问题。",
+    "cta_primary": "查看作品",
+    "cta_secondary": "下载简历"
+  },
+  "about": {
+    "title": "关于我",
+    "title_span": "我",
+    "description": "我是一名专注于人工智能和机器学习的软件与数据工程师。我的专业领域涵盖从数据清洗、探索性数据分析到构建和部署预测模型的整个数据流水线。我致力于持续学习，并将技术技能应用于创建具有实际影响力的现实应用。"
+  },
+  "skills": {
+    "title": "技术技能",
+    "title_span": "技能",
+    "categories": {
+      "programming": {
+        "title": "编程语言",
+        "items": ["Python", "SQL"]
+      },
+      "data_science": {
+        "title": "数据科学",
+        "items": ["Pandas", "NumPy", "Scikit-learn"]
+      },
+      "machine_learning": {
+        "title": "机器学习",
+        "items": ["回归", "分类", "特征工程", "模型评估"]
+      },
+      "data_analytics": {
+        "title": "数据分析",
+        "items": ["Power BI", "SQL", "数据清洗", "EDA"]
+      },
+      "tools": {
+        "title": "工具",
+        "items": ["Git", "GitHub", "VS Code"]
+      }
+    }
+  },
+  "projects": {
+    "title": "精选项目",
+    "title_span": "项目",
+    "placeholder_desc": "基于技术实现和结果的项目描述。",
+    "view_github": "在 GitHub 上查看",
+    "live_demo": "在线演示"
+  },
+  "certifications": {
+    "title": "专业证书",
+    "title_span": "证书",
+    "verify": "验证凭证"
+  },
+  "badges": {
+    "title": "专业徽章",
+    "title_span": "徽章",
+    "verify": "查看徽章"
+  },
+  "cv": {
+    "title": "个人简历",
+    "title_span": "简历",
+    "description": "下载您首选语言的专业简历。",
+    "download": "下载 PDF",
+    "view": "查看 PDF",
+    "en": "英文简历",
+    "sq": "阿尔巴尼亚文简历"
+  },
+  "contact": {
+    "title": "联系我",
+    "title_span": "联系",
+    "description": "我始终乐于讨论新的机会、合作或技术挑战。",
+    "email": "发送邮件",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "copyright": "© 2026 Adi Memeti. 保留所有权利。",
+    "text": "为热爱数据科学与人工智能而构建。"
+  }
+}

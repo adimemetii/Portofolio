@@ -1,0 +1,366 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const langSelect = document.getElementById('language-select');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    let currentLang = 'en';
+    let translations = {};
+
+    const certificates = [
+        {
+            title: { en: 'Intro to Machine Learning', sq: 'Hyrje në Machine Learning', zh: '机器学习入门' },
+            issuer: { en: 'Kaggle', sq: 'Kaggle', zh: 'Kaggle' },
+            link: 'https://www.kaggle.com/learn/certification/adimemeti/intro-to-machine-learning',
+            img: 'assets/images/intorml.jpg',
+            verify: true
+        },
+        {
+            title: { en: 'Python & Data Science', sq: 'Python & Data Science', zh: 'Python 与数据科学' },
+            issuer: { en: 'Tectigon Academy', sq: 'Tectigon Academy', zh: 'Tectigon Academy' },
+            link: '',
+            img: 'assets/images/p&ds.jpg',
+            verify: false
+        },
+        {
+            title: { en: 'Intermediate Machine Learning', sq: 'Machine Learning i Ndërmjetëm', zh: '中级机器学习' },
+            issuer: { en: 'Kaggle', sq: 'Kaggle', zh: 'Kaggle' },
+            link: 'https://www.kaggle.com/learn/certification/adimemeti/intermediate-machine-learning',
+            img: 'assets/images/intermediateml.jpg',
+            verify: true
+        },
+        {
+            title: { en: 'Full Stack Web Development', sq: 'Full Stack Web Development', zh: '全栈 Web 开发' },
+            issuer: { en: 'PërProgramera', sq: 'PërProgramera', zh: 'PërProgramera' },
+            link: '',
+            img: 'assets/images/pp.jpg',
+            verify: false
+        }
+    ];
+
+    const badges = [
+        {
+            name: { en: 'Linux Unhatched', sq: 'Linux Unhatched', zh: 'Linux Unhatched' },
+            issuer: { en: 'Cisco', sq: 'Cisco', zh: 'Cisco' },
+            link: 'https://www.netacad.com/certificates/?issuanceId=703f2196-e6c1-4166-b3ec-2308c3247cfd',
+            img: 'assets/images/badgelinux.png'
+        },
+        {
+            name: { en: 'Python Essentials 1', sq: 'Python Essentials 1', zh: 'Python 基础 1' },
+            issuer: { en: 'Cisco', sq: 'Cisco', zh: 'Cisco' },
+            link: 'https://www.netacad.com/certificates/?issuanceId=ac453b94-15f4-44b9-ad51-d9aaffa4013e',
+            img: 'assets/images/badgepythonessentials1.png'
+        },
+        {
+            name: { en: 'Python Essentials 2', sq: 'Python Essentials 2', zh: 'Python 基础 2' },
+            issuer: { en: 'Cisco', sq: 'Cisco', zh: 'Cisco' },
+            link: 'https://www.netacad.com/certificates/?issuanceId=ac453b94-15f4-44b9-ad51-d9aaffa4013e',
+            img: 'assets/images/badgepythonessentials2.png'
+        },
+        {
+            name: { en: 'Generative AI Fundamentals', sq: 'Bazat e AI Gjenerative', zh: '生成式人工智能基础' },
+            issuer: { en: 'Databricks', sq: 'Databricks', zh: 'Databricks' },
+            link: 'https://credentials.databricks.com/33447a19-1008-467a-a568-5404fb36cdb1',
+            img: 'assets/images/badgegenai.png'
+        },
+        {
+            name: { en: 'Introduction to Data Science', sq: 'Hyrje në Shkencën e të Dhënave', zh: '数据科学入门' },
+            issuer: { en: 'Cisco', sq: 'Cisco', zh: 'Cisco' },
+            link: 'https://www.netacad.com/certificates/?issuanceId=a6c82f09-308e-476f-87bd-6563e1d8bb95',
+            img: 'assets/images/badgeds.png'
+        }
+    ];
+
+    const projects = [
+        {
+            title: { en: 'FinSightAI (In Progress)', sq: 'FinSightAI (Në proces)', zh: 'FinSightAI (进行中)' },
+            desc: {
+                en: 'An AI-powered financial analysis platform designed to provide deep insights into market trends and financial data using advanced machine learning models.',
+                sq: 'Një platformë analitike financiare e fuqizuar nga AI, e dizajnuar për të ofruar njohuri të thella mbi trendet e tregut dhe të dhënat financiare duke përdorur modele të avancuara të machine learning.',
+                zh: '一个由 AI 驱动的财务分析平台，旨在利用先进的机器学习模型提供对市场趋势和财务数据的深入洞察。'
+            },
+            tags: ['AI', 'Machine Learning', 'Python', 'Finance'],
+            github: 'https://github.com/adimemetii/finsightai',
+            demo: 'https://finsightai-3ea6.onrender.com/'
+        },
+        {
+            title: { en: 'MS Doors and Windows', sq: 'MS Doors and Windows', zh: 'MS Doors and Windows' },
+            desc: {
+                en: 'A professional corporate website for MS Doors and Windows, focusing on high-performance UI/UX and responsive design to showcase architectural products.',
+                sq: 'Një faqe web korporative profesionale për MS Doors and Windows, me fokus në UI/UX performuese dhe dizajn responsiv për të shfaqur produktet arkitekturore.',
+                zh: '为 MS Doors and Windows 构建的专业企业网站，专注于高性能 UI/UX 和响应式设计，以展示建筑产品。'
+            },
+            tags: ['Responsive Design', 'Frontend', 'UI/UX'],
+            github: 'https://github.com/adimemetii/MS-DOORS-WINDOWS',
+            demo: 'https://msdoorsandwindows.netlify.app'
+        },
+        {
+            title: { en: 'BioPackKos', sq: 'BioPackKos', zh: 'BioPackKos' },
+            desc: {
+                en: 'A comprehensive corporate web presence for BioPackKos, integrating modern web standards to promote eco-friendly packaging solutions.',
+                sq: 'Një prezencë profesionale web për BioPackKos, duke integruar standardet moderne të web-it për të promovuar zgjidhjet e paketimit ekologjik.',
+                zh: '为 BioPackKos 构建的全面企业网站，集成现代 Web 标准以推广环保包装解决方案。'
+            },
+            tags: ['Corporate Web', 'Eco-friendly', 'Frontend'],
+            github: 'https://github.com/adimemetii/BioPackKos',
+            demo: 'https://bipackkos.com'
+        }
+    ];
+
+    async function loadTranslations(lang) {
+        try {
+            const response = await fetch(`locales/${lang}.json`);
+            translations = await response.json();
+            updateUI();
+        } catch (error) {
+            console.error('Error loading translations:', error);
+        }
+    }
+
+    function updateUI() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let value = translations;
+            keys.forEach(k => {
+                value = value[k];
+            });
+            el.textContent = value;
+        });
+
+        renderSkills();
+        renderProjects();
+        renderCerts();
+        renderBadges();
+        updateChatbotLanguage();
+    }
+
+    function renderSkills() {
+        const container = document.getElementById('skills-container');
+        container.innerHTML = '';
+        const skillData = translations.skills.categories;
+
+        for (const key in skillData) {
+            const cat = skillData[key];
+            const card = document.createElement('div');
+            card.className = 'skill-card reveal';
+            card.innerHTML = `
+                <h3>${cat.title}</h3>
+                <div class="skill-list">
+                    ${cat.items.map(item => `<span class="skill-item">${item}</span>`).join('')}
+                </div>
+            `;
+            container.appendChild(card);
+        }
+    }
+
+    function renderProjects() {
+        const container = document.getElementById('projects-container');
+        container.innerHTML = '';
+
+        projects.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'project-card reveal';
+            card.innerHTML = `
+                <div class="project-info">
+                    <h3>${proj.title[currentLang]}</h3>
+                    <p>${proj.desc[currentLang]}</p>
+                    <div class="project-tags">
+                        ${proj.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="project-links">
+                        <a href="${proj.github}" target="_blank" class="btn btn-small btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="${proj.demo}" target="_blank" class="btn btn-small btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderCerts() {
+        const container = document.getElementById('certs-container');
+        container.innerHTML = '';
+
+        certificates.forEach(cert => {
+            const card = document.createElement('div');
+            card.className = 'cert-card reveal';
+            card.innerHTML = `
+                <img src="${cert.img}" alt="${cert.title[currentLang]}" class="cert-img">
+                <h3>${cert.title[currentLang]}</h3>
+                <p>${cert.issuer[currentLang]}</p>
+                ${cert.verify ? `<a href="${cert.link}" target="_blank" rel="noopener noreferrer" class="btn btn-small btn-primary">${translations.certifications.verify}</a>` : ''}
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderBadges() {
+        const container = document.getElementById('badges-container');
+        container.innerHTML = '';
+
+        badges.forEach(badge => {
+            const card = document.createElement('div');
+            card.className = 'badge-card reveal';
+            card.innerHTML = `
+                <img src="${badge.img}" alt="${badge.name[currentLang]}" class="badge-img">
+                <h3>${badge.name[currentLang]}</h3>
+                <p>${badge.issuer[currentLang]}</p>
+                <a href="${badge.link}" target="_blank" rel="noopener noreferrer" class="btn btn-small btn-secondary">${translations.badges.verify}</a>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // --- Chatbot Logic ---
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatClose = document.getElementById('chat-close');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatSuggestions = document.getElementById('chat-suggestions');
+
+    let conversationHistory = [];
+
+    const chatbotSuggestions = {
+        en: [
+            { q: 'Who are you?', label: 'Who are you?' },
+            { q: 'What technologies do you work with?', label: 'Technologies?' },
+            { q: 'Tell me about your projects.', label: 'Projects?' },
+            { q: 'What certifications do you have?', label: 'Certifications?' },
+            { q: 'How can I contact you?', label: 'Contact?' },
+        ],
+        sq: [
+            { q: 'Kush jeni ju?', label: 'Kush jeni?' },
+            { q: 'Me cilat teknologji punoni?', label: 'Teknologjitë?' },
+            { q: 'Më trego për projektet tuaja.', label: 'Projektet?' },
+            { q: 'Çfarë certifikatesh keni?', label: 'Certifikimet?' },
+            { q: 'Si mund t\'ju kontaktoj?', label: 'Kontakti?' },
+        ],
+        zh: [
+            { q: '你是谁？', label: '你是谁？' },
+            { q: '你使用哪些技术？', label: '技术栈？' },
+            { q: '请介绍一下你的项目。', label: '项目？' },
+            { q: '你有哪些证书？', label: '证书？' },
+            { q: '如何联系你？', label: '联系方式？' },
+        ]
+    };
+
+    function addMessage(role, text) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${role}`;
+        msgDiv.textContent = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function sendMessage(text) {
+        if (!text.trim()) return;
+
+        addMessage('user', text);
+        conversationHistory.push({ role: 'user', content: text });
+        chatInput.value = '';
+
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'message assistant';
+        typingDiv.textContent = currentLang === 'en' ? '...' : (currentLang === 'sq' ? '...' : '...');
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            const response = await fetch('/.netlify/functions/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    messages: conversationHistory,
+                    lang: currentLang
+                }),
+            });
+
+            const data = await response.json();
+            chatMessages.removeChild(typingDiv);
+
+            if (data.reply) {
+                addMessage('assistant', data.reply);
+                conversationHistory.push({ role: 'assistant', content: data.reply });
+            } else {
+                addMessage('assistant', 'Sorry, I encountered an error.');
+            }
+        } catch (error) {
+            chatMessages.removeChild(typingDiv);
+            addMessage('assistant', 'Error connecting to the AI service.');
+        }
+    }
+
+    function updateChatbotLanguage() {
+        // Update suggestions
+        chatSuggestions.innerHTML = '';
+        const suggestions = chatbotSuggestions[currentLang] || chatbotSuggestions.en;
+        suggestions.forEach(s => {
+            const btn = document.createElement('button');
+            btn.className = 'suggestion-btn';
+            btn.textContent = s.label;
+            btn.addEventListener('click', () => sendMessage(s.q));
+            chatSuggestions.appendChild(btn);
+        });
+
+        // Reset chat when language changes to avoid confusion
+        chatMessages.innerHTML = '';
+        conversationHistory = [];
+        addMessage('assistant', currentLang === 'en'
+            ? 'Hello! How can I help you today?'
+            : (currentLang === 'sq' ? 'Përshëndetje! Si mund t\'ju ndihmoj sot?' : '你好！今天我能为您提供什么帮助？'));
+    }
+
+    chatbotToggle.addEventListener('click', () => {
+        chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+        chatbotToggle.classList.toggle('hidden');
+    });
+
+    chatClose.addEventListener('click', () => {
+        chatbotWindow.style.display = 'none';
+        chatbotToggle.classList.remove('hidden');
+    });
+
+    chatSend.addEventListener('click', () => sendMessage(chatInput.value));
+
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage(chatInput.value);
+    });
+
+    // --- Rest of functionality ---
+    mobileMenuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenuToggle.querySelector('i').classList.toggle('fa-bars');
+        mobileMenuToggle.querySelector('i').classList.toggle('fa-times');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+            mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+        });
+    });
+
+    langSelect.addEventListener('change', (e) => {
+        currentLang = e.target.value;
+        loadTranslations(currentLang);
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    function applyReveal() {
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    loadTranslations('en').then(() => {
+        applyReveal();
+    });
+});

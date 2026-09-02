@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adi Memeti | Data Science & AI Engineer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="bg-visuals">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Adi<span>Memeti</span></a>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="#certifications" data-i18n="nav.certifications">Certifications</a></li>
+                <li><a href="#badges" data-i18n="nav.badges">Badges</a></li>
+                <li><a href="#cv" data-i18n="nav.cv">CV</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="lang-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="sq">Shqip</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 data-i18n="hero.title">Adi Memeti</h1>
+                <h2 data-i18n="hero.subtitle">Data Science & AI Engineer</h2>
+                <p data-i18n="hero.description">Passionate engineer specializing in Machine Learning, Data Analytics, and Software Development.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_primary">View My Work</a>
+                    <a href="#cv" class="btn btn-secondary" data-i18n="hero.cta_secondary">Download CV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/profilepicrmvbg.png" alt="Adi Memeti" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About <span data-i18n="about.title_span">Me</span></h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p data-i18n="about.description">I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Technical <span data-i18n="skills.title_span">Skills</span></h2>
+            <div class="skills-grid" id="skills-container">
+                <!-- Skills will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured <span data-i18n="projects.title_span">Projects</span></h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title"><span data-i18n="certifications.title_span">Certifications</span></h2>
+            <div class="certs-grid" id="certs-container">
+                <!-- Certificates will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="badges" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional <span data-i18n="badges.title_span">Badges</span></h2>
+            <div class="badges-grid" id="badges-container">
+                <!-- Badges will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Curriculum <span data-i18n="cv.title_span">Vitae</span></h2>
+            <p class="section-subtitle" data-i18n="cv.description">Download my professional CV in your preferred language.</p>
+            <div class="cv-container">
+                <div class="cv-card">
+                    <i class="fas fa-file-pdf cv-icon"></i>
+                    <h3 data-i18n="cv.en">English CV</h3>
+                    <div class="cv-btns">
+                        <a href="assets/docs/Adi_Memeti_CV_English.pdf" target="_blank" class="btn btn-small" data-i18n="cv.view">View PDF</a>
+                        <a href="assets/docs/Adi_Memeti_CV_English.pdf" download class="btn btn-small btn-primary" data-i18n="cv.download">Download PDF</a>
+                    </div>
+                </div>
+                <div class="cv-card">
+                    <i class="fas fa-file-pdf cv-icon"></i>
+                    <h3 data-i18n="cv.sq">Albanian CV</h3>
+                    <div class="cv-btns">
+                        <a href="assets/docs/Adi_Memeti_CV_Shqip (1).pdf" target="_blank" class="btn btn-small" data-i18n="cv.view">View PDF</a>
+                        <a href="assets/docs/Adi_Memeti_CV_Shqip (1).pdf" download class="btn btn-small btn-primary" data-i18n="cv.download">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In <span data-i18n="contact.title_span">Touch</span></h2>
+            <p class="section-subtitle" data-i18n="contact.description">I'm always open to discussing new opportunities.</p>
+            <div class="contact-links">
+                <a href="mailto:adimemeti97@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span data-i18n="contact.email">Email Me</span>
+                </a>
+                <a href="https://www.linkedin.com/in/adi-memeti-880b31237/" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span data-i18n="contact.linkedin">LinkedIn</span>
+                </a>
+                <a href="https://github.com/adimemetii" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span data-i18n="contact.github">GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbot-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chat-header">
+                <h3>Adi AI Assistant</h3>
+                <i class="fas fa-times chat-close" id="chat-close"></i>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be injected here -->
+            </div>
+            <div class="chat-suggestions" id="chat-suggestions">
+                <button class="suggestion-btn" data-q="Who are you?">Who are you?</button>
+                <button class="suggestion-btn" data-q="What technologies do you work with?">Technologies?</button>
+                <button class="suggestion-btn" data-q="Tell me about your projects.">Projects?</button>
+                <button class="suggestion-btn" data-q="What certifications do you have?">Certifications?</button>
+                <button class="suggestion-btn" data-q="How can I contact you?">Contact?</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Ask me anything...">
+                <button class="chat-send" id="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p data-i18n="footer.text">Built with passion for Data Science and AI.</p>
+                <p data-i18n="footer.copyright">© 2026 Adi Memeti. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
