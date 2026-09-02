@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adi Memeti | Data Science & AI Engineer</title>
+    <link rel="icon" type="image/png" href="assets/images/profilepicrmvbg.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
             <div class="hero-content">
                 <h1 data-i18n="hero.title">Adi Memeti</h1>
                 <h2 data-i18n="hero.subtitle">Data Science & AI Engineer</h2>
-                <p data-i18n="hero.description">Passionate engineer specializing in Machine Learning, Data Analytics, and Software Development.</p>
+                <p data-i18n="hero.description">Passionate engineer specializing in Machine Learning and Data Analytics.</p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_primary">View My Work</a>
                     <a href="#cv" class="btn btn-secondary" data-i18n="hero.cta_secondary">Download CV</a>
@@ -64,6 +65,15 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p data-i18n="about.description">I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning.</p>
+                    <div class="internship-card">
+                        <img src="assets/images/ta.png" alt="Tectigon Academy logo" class="internship-logo">
+                        <div class="internship-details">
+                            <p class="internship-label" data-i18n="about.internship_label">Current Internship</p>
+                            <h3 data-i18n="about.internship_title">Data Science Intern</h3>
+                            <p data-i18n="about.internship_description">Currently completing the practical part of my Data Science internship at Tectigon Academy.</p>
+                            <span class="internship-date" data-i18n="about.internship_date">Since 6 August · Ongoing</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +143,7 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Get In <span data-i18n="contact.title_span">Touch</span></h2>
-            <p class="section-subtitle" data-i18n="contact.description">I'm always open to discussing new opportunities.</p>
+            <p class="section-subtitle contact-description" data-i18n="contact.description">I'm always open to discussing new opportunities, collaborations, or technical challenges.</p>
             <div class="contact-links">
                 <a href="mailto:adimemeti97@gmail.com" class="contact-item">
                     <i class="fas fa-envelope"></i>
@@ -151,33 +161,31 @@
         </div>
     </section>
 
-    <div class="chatbot-container">
-        <button class="chatbot-button" id="chatbot-toggle">
-            <i class="fas fa-comment-dots"></i>
-        </button>
-        <div class="chatbot-window" id="chatbot-window">
-            <div class="chat-header">
-                <h3>Adi AI Assistant</h3>
-                <i class="fas fa-times chat-close" id="chat-close"></i>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be injected here -->
-            </div>
-            <div class="chat-suggestions" id="chat-suggestions">
-                <button class="suggestion-btn" data-q="Who are you?">Who are you?</button>
-                <button class="suggestion-btn" data-q="What technologies do you work with?">Technologies?</button>
-                <button class="suggestion-btn" data-q="Tell me about your projects.">Projects?</button>
-                <button class="suggestion-btn" data-q="What certifications do you have?">Certifications?</button>
-                <button class="suggestion-btn" data-q="How can I contact you?">Contact?</button>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" class="chat-input" id="chat-input" placeholder="Ask me anything...">
-                <button class="chat-send" id="chat-send">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+    <section id="ai-assistant" class="section ai-section">
+        <div class="container">
+            <div class="ai-panel">
+                <div class="ai-panel-header">
+                    <div>
+                        <p class="eyebrow" data-i18n="assistant.eyebrow">AI ASSISTANT</p>
+                        <h2 data-i18n="assistant.title">Ask anything</h2>
+                        <p class="ai-panel-description" data-i18n="assistant.description">Ask general questions or learn more about Adi's work.</p>
+                    </div>
+                    <div class="ai-actions">
+                        <span class="ai-status"><span></span><span data-i18n="assistant.status">Online</span></span>
+                        <button class="clear-chat" id="clear-chat" type="button" data-i18n="assistant.clear">Clear chat</button>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+                <div class="chat-suggestions" id="chat-suggestions"></div>
+                <form class="chat-input-area" id="chat-form">
+                    <input type="text" class="chat-input" id="chat-input" data-i18n-placeholder="assistant.placeholder" placeholder="Ask a question..." autocomplete="off">
+                    <button class="chat-send" type="submit" aria-label="Send message" data-i18n-aria-label="assistant.send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer class="footer">
         <div class="container">

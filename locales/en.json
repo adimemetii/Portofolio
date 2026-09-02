@@ -12,14 +12,18 @@
   "hero": {
     "title": "Adi Memeti",
     "subtitle": "Data Scientist",
-    "description": "Passionate engineer specializing in Machine Learning, Data Analytics, and Software Development. Dedicated to solving complex problems with data-driven insights and innovative AI solutions.",
+    "description": "Passionate engineer specializing in Machine Learning and Data Analytics. Dedicated to solving complex problems with data-driven insights and innovative AI solutions.",
     "cta_primary": "View My Work",
     "cta_secondary": "Download CV"
   },
   "about": {
     "title": "About Me",
     "title_span": "Me",
-    "description": "I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning."
+    "description": "I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning.",
+    "internship_label": "Current Internship",
+    "internship_title": "Data Science Intern",
+    "internship_description": "Currently completing the practical part of my Data Science internship at Tectigon Academy.",
+    "internship_date": "Since 6 August · Ongoing"
   },
   "skills": {
     "title": "Technical Skills",
@@ -39,7 +43,7 @@
       },
       "data_analytics": {
         "title": "Data Analytics",
-        "items": ["Power BI", "SQL", "Data Cleaning", "EDA"]
+        "items": ["Power BI", "Tableau", "SQL", "Data Cleaning", "EDA"]
       },
       "tools": {
         "title": "Tools",
@@ -80,6 +84,15 @@
     "email": "Email Me",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "assistant": {
+    "eyebrow": "AI ASSISTANT",
+    "title": "Ask anything",
+    "description": "Ask general questions or learn more about Adi's work.",
+    "status": "Online",
+    "placeholder": "Ask a question...",
+    "send": "Send message",
+    "clear": "Clear chat"
   },
   "footer": {
     "copyright": "© 2026 Adi Memeti. All rights reserved.",

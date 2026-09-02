@@ -127,12 +127,118 @@ document.addEventListener('DOMContentLoaded', () => {
             el.textContent = value;
         });
 
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            el.placeholder = translations.assistant.placeholder;
+        });
+        document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+            el.setAttribute('aria-label', translations.assistant.send);
+        });
+
         renderSkills();
         renderProjects();
         renderCerts();
         renderBadges();
         updateChatbotLanguage();
     }
+
+    const chatMessages = document.getElementById('chat-messages');
+    const chatSuggestions = document.getElementById('chat-suggestions');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const clearChatButton = document.getElementById('clear-chat');
+    let conversationHistory = [];
+    let chatRequestInProgress = false;
+
+    const chatbotSuggestions = {
+        en: [
+            ['What can you help me with?', 'Capabilities'],
+            ['Who is Adi Memeti?', 'About Adi'],
+            ['Explain machine learning simply.', 'Machine learning'],
+            ['What are the latest trends in AI?', 'AI trends'],
+            ['How can I contact Adi?', 'Contact']
+        ],
+        sq: [
+            ['Me çfarë mund të më ndihmosh?', 'Aftësitë'],
+            ['Kush është Adi Memeti?', 'Rreth Adit'],
+            ['Shpjego machine learning thjesht.', 'Machine learning'],
+            ['Cilat janë trendet e fundit në AI?', 'Trendet e AI'],
+            ['Si mund ta kontaktoj Adin?', 'Kontakti']
+        ],
+        zh: [
+            ['你可以帮助我什么？', '功能'],
+            ['Adi Memeti 是谁？', '关于 Adi'],
+            ['请简单解释机器学习。', '机器学习'],
+            ['AI 的最新趋势是什么？', 'AI 趋势'],
+            ['如何联系 Adi？', '联系方式']
+        ]
+    };
+
+    function addChatMessage(role, text) {
+        const message = document.createElement('div');
+        message.className = `message ${role}`;
+        message.textContent = text;
+        chatMessages.appendChild(message);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return message;
+    }
+
+    function updateChatbotLanguage() {
+        if (!chatMessages || !chatSuggestions) return;
+        chatSuggestions.innerHTML = '';
+        const suggestions = chatbotSuggestions[currentLang] || chatbotSuggestions.en;
+        suggestions.forEach(([question, label]) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'suggestion-btn';
+            button.textContent = label;
+            button.addEventListener('click', () => sendChatMessage(question));
+            chatSuggestions.appendChild(button);
+        });
+        chatMessages.innerHTML = '';
+        conversationHistory = [];
+        const greeting = currentLang === 'sq'
+            ? 'Përshëndetje! Më bëj çdo pyetje.'
+            : currentLang === 'zh' ? '你好！你可以问我任何问题。' : 'Hello! Ask me anything.';
+        addChatMessage('assistant', greeting);
+        if (chatInput) chatInput.placeholder = translations.assistant?.placeholder || 'Ask a question...';
+    }
+
+    clearChatButton?.addEventListener('click', updateChatbotLanguage);
+
+    async function sendChatMessage(text) {
+        if (!text.trim() || chatRequestInProgress) return;
+        chatRequestInProgress = true;
+        addChatMessage('user', text);
+        conversationHistory.push({ role: 'user', content: text });
+        chatInput.value = '';
+        const typingMessage = addChatMessage('assistant', '...');
+
+        try {
+            const response = await fetch('/.netlify/functions/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: conversationHistory, lang: currentLang })
+            });
+            const responseText = await response.text();
+            let data = {};
+            try { data = JSON.parse(responseText); } catch { /* Keep the raw response below. */ }
+            typingMessage.remove();
+            if (!response.ok) throw new Error(data.error || responseText || `AI service returned ${response.status}`);
+            if (!data.reply) throw new Error('The AI returned an empty response.');
+            addChatMessage('assistant', data.reply);
+            conversationHistory.push({ role: 'assistant', content: data.reply });
+        } catch (error) {
+            typingMessage.remove();
+            addChatMessage('assistant', error.message || 'Unable to connect to the AI service.');
+        } finally {
+            chatRequestInProgress = false;
+        }
+    }
+
+    chatForm?.addEventListener('submit', event => {
+        event.preventDefault();
+        sendChatMessage(chatInput.value);
+    });
 
     function renderSkills() {
         const container = document.getElementById('skills-container');
@@ -210,123 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(card);
         });
     }
-
-    // --- Chatbot Logic ---
-    const chatbotToggle = document.getElementById('chatbot-toggle');
-    const chatbotWindow = document.getElementById('chatbot-window');
-    const chatClose = document.getElementById('chat-close');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const chatSend = document.getElementById('chat-send');
-    const chatSuggestions = document.getElementById('chat-suggestions');
-
-    let conversationHistory = [];
-
-    const chatbotSuggestions = {
-        en: [
-            { q: 'Who are you?', label: 'Who are you?' },
-            { q: 'What technologies do you work with?', label: 'Technologies?' },
-            { q: 'Tell me about your projects.', label: 'Projects?' },
-            { q: 'What certifications do you have?', label: 'Certifications?' },
-            { q: 'How can I contact you?', label: 'Contact?' },
-        ],
-        sq: [
-            { q: 'Kush jeni ju?', label: 'Kush jeni?' },
-            { q: 'Me cilat teknologji punoni?', label: 'Teknologjitë?' },
-            { q: 'Më trego për projektet tuaja.', label: 'Projektet?' },
-            { q: 'Çfarë certifikatesh keni?', label: 'Certifikimet?' },
-            { q: 'Si mund t\'ju kontaktoj?', label: 'Kontakti?' },
-        ],
-        zh: [
-            { q: '你是谁？', label: '你是谁？' },
-            { q: '你使用哪些技术？', label: '技术栈？' },
-            { q: '请介绍一下你的项目。', label: '项目？' },
-            { q: '你有哪些证书？', label: '证书？' },
-            { q: '如何联系你？', label: '联系方式？' },
-        ]
-    };
-
-    function addMessage(role, text) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${role}`;
-        msgDiv.textContent = text;
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    async function sendMessage(text) {
-        if (!text.trim()) return;
-
-        addMessage('user', text);
-        conversationHistory.push({ role: 'user', content: text });
-        chatInput.value = '';
-
-        const typingDiv = document.createElement('div');
-        typingDiv.className = 'message assistant';
-        typingDiv.textContent = currentLang === 'en' ? '...' : (currentLang === 'sq' ? '...' : '...');
-        chatMessages.appendChild(typingDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        try {
-            const response = await fetch('/.netlify/functions/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    messages: conversationHistory,
-                    lang: currentLang
-                }),
-            });
-
-            const data = await response.json();
-            chatMessages.removeChild(typingDiv);
-
-            if (data.reply) {
-                addMessage('assistant', data.reply);
-                conversationHistory.push({ role: 'assistant', content: data.reply });
-            } else {
-                addMessage('assistant', 'Sorry, I encountered an error.');
-            }
-        } catch (error) {
-            chatMessages.removeChild(typingDiv);
-            addMessage('assistant', 'Error connecting to the AI service.');
-        }
-    }
-
-    function updateChatbotLanguage() {
-        // Update suggestions
-        chatSuggestions.innerHTML = '';
-        const suggestions = chatbotSuggestions[currentLang] || chatbotSuggestions.en;
-        suggestions.forEach(s => {
-            const btn = document.createElement('button');
-            btn.className = 'suggestion-btn';
-            btn.textContent = s.label;
-            btn.addEventListener('click', () => sendMessage(s.q));
-            chatSuggestions.appendChild(btn);
-        });
-
-        // Reset chat when language changes to avoid confusion
-        chatMessages.innerHTML = '';
-        conversationHistory = [];
-        addMessage('assistant', currentLang === 'en'
-            ? 'Hello! How can I help you today?'
-            : (currentLang === 'sq' ? 'Përshëndetje! Si mund t\'ju ndihmoj sot?' : '你好！今天我能为您提供什么帮助？'));
-    }
-
-    chatbotToggle.addEventListener('click', () => {
-        chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
-        chatbotToggle.classList.toggle('hidden');
-    });
-
-    chatClose.addEventListener('click', () => {
-        chatbotWindow.style.display = 'none';
-        chatbotToggle.classList.remove('hidden');
-    });
-
-    chatSend.addEventListener('click', () => sendMessage(chatInput.value));
-
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage(chatInput.value);
-    });
 
     // --- Rest of functionality ---
     mobileMenuToggle.addEventListener('click', () => {

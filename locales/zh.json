@@ -12,14 +12,18 @@
   "hero": {
     "title": "Adi Memeti",
     "subtitle": "数据科学家",
-    "description": "一名专注于机器学习、数据分析和软件开发的工程师。致力于通过数据驱动的洞察和创新的 AI 解决方案来解决复杂问题。",
+    "description": "一名专注于机器学习和数据分析的工程师。致力于通过数据驱动的洞察和创新的 AI 解决方案来解决复杂问题。",
     "cta_primary": "查看作品",
     "cta_secondary": "下载简历"
   },
   "about": {
     "title": "关于我",
     "title_span": "我",
-    "description": "我是一名专注于人工智能和机器学习的软件与数据工程师。我的专业领域涵盖从数据清洗、探索性数据分析到构建和部署预测模型的整个数据流水线。我致力于持续学习，并将技术技能应用于创建具有实际影响力的现实应用。"
+    "description": "我是一名专注于人工智能和机器学习的软件与数据工程师。我的专业领域涵盖从数据清洗、探索性数据分析到构建和部署预测模型的整个数据流水线。我致力于持续学习，并将技术技能应用于创建具有实际影响力的现实应用。",
+    "internship_label": "当前实习",
+    "internship_title": "数据科学实习生",
+    "internship_description": "目前正在 Tectigon Academy 完成数据科学实习的实践部分。",
+    "internship_date": "自 8 月 6 日起 · 进行中"
   },
   "skills": {
     "title": "技术技能",
@@ -39,7 +43,7 @@
       },
       "data_analytics": {
         "title": "数据分析",
-        "items": ["Power BI", "SQL", "数据清洗", "EDA"]
+        "items": ["Power BI", "Tableau", "SQL", "数据清洗", "EDA"]
       },
       "tools": {
         "title": "工具",
@@ -80,6 +84,15 @@
     "email": "发送邮件",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "assistant": {
+    "eyebrow": "AI 助手",
+    "title": "随便问",
+    "description": "你可以提问一般问题，也可以了解 Adi 的工作。",
+    "status": "在线",
+    "placeholder": "请输入问题...",
+    "send": "发送消息",
+    "clear": "清除对话"
   },
   "footer": {
     "copyright": "© 2026 Adi Memeti. 保留所有权利。",
