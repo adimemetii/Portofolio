@@ -11,15 +11,15 @@
   },
   "hero": {
     "title": "Adi Memeti",
-    "subtitle": "Data Scientist",
-    "description": "Passionate engineer specializing in Machine Learning and Data Analytics. Dedicated to solving complex problems with data-driven insights and innovative AI solutions.",
+    "subtitle": "Data Science Intern",
+    "description": "Passionate Data Science Intern focusing on Machine Learning and Data Analytics to solve complex problems with data-driven insights.",
     "cta_primary": "View My Work",
     "cta_secondary": "Download CV"
   },
   "about": {
     "title": "About Me",
     "title_span": "Me",
-    "description": "I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning.",
+    "description": "I am a Data Science Intern with a strong passion for AI and Machine Learning.",
     "internship_label": "Current Internship",
     "internship_title": "Data Science Intern",
     "internship_description": "Currently completing the practical part of my Data Science internship at Tectigon Academy.",

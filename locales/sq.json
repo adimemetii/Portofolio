@@ -11,15 +11,15 @@
   },
   "hero": {
     "title": "Adi Memeti",
-    "subtitle": "Data Scientist",
-    "description": "Inxhinier i apasionuar i specializuar në Machine Learning dhe Analitikën e të Dhënave. I përkushtuar për të zgjidhur probleme komplekse përmes njohurive të të dhënave dhe zgjidhjeve inovative të AI.",
+    "subtitle": "Praktikant i Data Science",
+    "description": "Praktikant i apasionuar i Data Science, i fokusuar në Machine Learning dhe Analitikën e të Dhënave për të zgjidhur probleme komplekse.",
     "cta_primary": "Shih Punën Time",
     "cta_secondary": "Shkarko CV-në"
   },
   "about": {
     "title": "Rreth Me",
     "title_span": "Me",
-    "description": "Jam një inxhinier i përkushtuar i softuerit dhe të dhënave me një bazë të fortë në AI dhe Machine Learning. Ekspertiza ime përfshin të gjithë procesin e të dhënave, nga pastrimi dhe analiza eksploruese deri në ndërtimin dhe implementimin e modeleve parashikuese. Jam i përkushtuar në mësimin e vazhdueshëm dhe aplikimin e aftësive teknike për të krijuar aplikacione me ndikim në botën reale.",
+    "description": "Jam një praktikant i Data Science me një pasion të fortë për AI dhe Machine Learning.",
     "internship_label": "Internship aktual",
     "internship_title": "Praktikant i Data Science",
     "internship_description": "Aktualisht po ndjek pjesën praktike të internship-it tim në Data Science në Tectigon Academy.",

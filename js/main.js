@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             verify: true
         },
         {
-            title: { en: 'Full Stack Web Development', sq: 'Full Stack Web Development', zh: '全栈 Web 开发' },
+            title: { en: 'Programming Fundamentals', sq: 'Bazat e Programimit', zh: '编程基础' },
             issuer: { en: 'PërProgramera', sq: 'PërProgramera', zh: 'PërProgramera' },
             link: '',
             img: 'assets/images/pp.jpg',
@@ -245,17 +245,24 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
         const skillData = translations.skills.categories;
 
+        let index = 0;
         for (const key in skillData) {
             const cat = skillData[key];
             const card = document.createElement('div');
-            card.className = 'skill-card reveal';
+            // Make the first card 'featured' for the Bento grid effect
+            const isFeatured = index === 0;
+            card.className = `skill-card reveal ${isFeatured ? 'featured' : ''}`;
             card.innerHTML = `
-                <h3>${cat.title}</h3>
+                <div class="skill-card-header">
+                    <h3 class="skill-category-title">${cat.title}</h3>
+                    <div class="skill-category-icon"><i class="fas fa-layer-group"></i></div>
+                </div>
                 <div class="skill-list">
                     ${cat.items.map(item => `<span class="skill-item">${item}</span>`).join('')}
                 </div>
             `;
             container.appendChild(card);
+            index++;
         }
     }
 
@@ -263,19 +270,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('projects-container');
         container.innerHTML = '';
 
-        projects.forEach(proj => {
+        projects.forEach((proj, index) => {
+            const gradients = [
+                'linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1))',
+                'linear-gradient(135deg, rgba(192, 132, 252, 0.1), rgba(56, 189, 248, 0.1))',
+                'linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(192, 132, 252, 0.1))'
+            ];
+            const gradient = gradients[index % gradients.length];
+
             const card = document.createElement('div');
             card.className = 'project-card reveal';
+            card.style.setProperty('--project-gradient', gradient);
             card.innerHTML = `
+                <div class="project-visual">
+                    <div class="project-glow"></div>
+                    <i class="fas fa-rocket project-main-icon"></i>
+                </div>
                 <div class="project-info">
-                    <h3>${proj.title[currentLang]}</h3>
+                    <div class="project-header">
+                        <h3>${proj.title[currentLang]}</h3>
+                        <div class="project-status ${proj.title[currentLang].includes('Progress') ? 'status-progress' : 'status-completed'}">${proj.title[currentLang].includes('Progress') ? 'In Progress' : 'Completed'}</div>
+                    </div>
                     <p>${proj.desc[currentLang]}</p>
                     <div class="project-tags">
                         ${proj.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                     </div>
                     <div class="project-links">
-                        <a href="${proj.github}" target="_blank" class="btn btn-small btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="${proj.demo}" target="_blank" class="btn btn-small btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <a href="${proj.github}" target="_blank" class="btn btn-small btn-secondary"><i class="fab fa-github"></i> Code</a>
+                        <a href="${proj.demo}" target="_blank" class="btn btn-small btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
             `;
@@ -287,9 +309,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('certs-container');
         container.innerHTML = '';
 
-        certificates.forEach(cert => {
+        certificates.forEach((cert, index) => {
+            const isLast = index === certificates.length - 1;
             const card = document.createElement('div');
-            card.className = 'cert-card reveal';
+            card.className = `cert-card reveal ${isLast ? 'cert-last' : ''}`;
             card.innerHTML = `
                 <img src="${cert.img}" alt="${cert.title[currentLang]}" class="cert-img">
                 <h3>${cert.title[currentLang]}</h3>

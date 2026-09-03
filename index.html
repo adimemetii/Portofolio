@@ -45,17 +45,40 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
+                <div class="hero-badge" data-i18n="hero.badge">Available for Opportunities</div>
                 <h1 data-i18n="hero.title">Adi Memeti</h1>
                 <h2 data-i18n="hero.subtitle">Data Science & AI Engineer</h2>
-                <p data-i18n="hero.description">Passionate engineer specializing in Machine Learning and Data Analytics.</p>
+                <p data-i18n="hero.description">Architecting the future of intelligence through Machine Learning and Data Engineering. Transforming complex data into world-class digital products.</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_primary">View My Work</a>
-                    <a href="#cv" class="btn btn-secondary" data-i18n="hero.cta_secondary">Download CV</a>
+                    <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_primary">Explore Work <i class="fas fa-arrow-right"></i></a>
+                    <a href="#cv" class="btn btn-secondary" data-i18n="hero.cta_secondary">Download CV <i class="fas fa-download"></i></a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="assets/images/profilepicrmvbg.png" alt="Adi Memeti" class="profile-img">
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/profilepicrmvbg.png" alt="Adi Memeti" class="profile-img">
+                    <div class="hero-glow"></div>
+                </div>
+                <!-- Floating depth elements -->
+                <div class="floating-card card-1">
+                    <i class="fas fa-database"></i>
+                    <span>Data Science</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-robot"></i>
+                    <span>Machine Learning</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>AI Enthusiast</span>
+                </div>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span data-i18n="hero.scroll">Explore more</span>
         </div>
     </section>
 
@@ -63,15 +86,29 @@
         <div class="container">
             <h2 class="section-title">About <span data-i18n="about.title_span">Me</span></h2>
             <div class="about-grid">
-                <div class="about-text">
-                    <p data-i18n="about.description">I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning.</p>
+                <div class="about-content">
+                    <p class="about-lead" data-i18n="about.description">I am a dedicated software and data engineer with a strong foundation in AI and Machine Learning.</p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Core Focus</span>
+                            <span class="detail-value">Deep Learning, Predictive Analytics, & Software Architecture</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Approach</span>
+                            <span class="detail-value">Combining theoretical AI research with production-grade engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
                     <div class="internship-card">
-                        <img src="assets/images/ta.png" alt="Tectigon Academy logo" class="internship-logo">
-                        <div class="internship-details">
-                            <p class="internship-label" data-i18n="about.internship_label">Current Internship</p>
-                            <h3 data-i18n="about.internship_title">Data Science Intern</h3>
-                            <p data-i18n="about.internship_description">Currently completing the practical part of my Data Science internship at Tectigon Academy.</p>
-                            <span class="internship-date" data-i18n="about.internship_date">Since 6 August · Ongoing</span>
+                        <div class="internship-inner">
+                            <img src="assets/images/ta.png" alt="Tectigon Academy logo" class="internship-logo">
+                            <div class="internship-details">
+                                <p class="internship-label" data-i18n="about.internship_label">Current Internship</p>
+                                <h3 data-i18n="about.internship_title">Data Science Intern</h3>
+                                <p data-i18n="about.internship_description">Currently completing the practical part of my Data Science internship at Tectigon Academy.</p>
+                                <span class="internship-date" data-i18n="about.internship_date">Since 6 August · Ongoing</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,7 +155,6 @@
     <section id="cv" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Curriculum <span data-i18n="cv.title_span">Vitae</span></h2>
-            <p class="section-subtitle" data-i18n="cv.description">Download my professional CV in your preferred language.</p>
             <div class="cv-container">
                 <div class="cv-card">
                     <i class="fas fa-file-pdf cv-icon"></i>

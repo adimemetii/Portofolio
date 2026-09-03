@@ -11,15 +11,15 @@
   },
   "hero": {
     "title": "Adi Memeti",
-    "subtitle": "数据科学家",
-    "description": "一名专注于机器学习和数据分析的工程师。致力于通过数据驱动的洞察和创新的 AI 解决方案来解决复杂问题。",
+    "subtitle": "数据科学实习生",
+    "description": "一名专注于机器学习和数据分析的数据科学实习生，致力于通过数据驱动的洞察来解决复杂问题。",
     "cta_primary": "查看作品",
     "cta_secondary": "下载简历"
   },
   "about": {
     "title": "关于我",
     "title_span": "我",
-    "description": "我是一名专注于人工智能和机器学习的软件与数据工程师。我的专业领域涵盖从数据清洗、探索性数据分析到构建和部署预测模型的整个数据流水线。我致力于持续学习，并将技术技能应用于创建具有实际影响力的现实应用。",
+    "description": "我是一名对人工智能和机器学习充满热情的数据科学实习生。",
     "internship_label": "当前实习",
     "internship_title": "数据科学实习生",
     "internship_description": "目前正在 Tectigon Academy 完成数据科学实习的实践部分。",
