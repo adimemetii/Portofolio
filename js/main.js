@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCerts();
         renderBadges();
         updateChatbotLanguage();
+        applyReveal();
     }
 
     const chatMessages = document.getElementById('chat-messages');
