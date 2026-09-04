@@ -383,8 +383,6 @@ ul {
     animation: float-soft 6s ease-in-out infinite;
     position: relative;
     z-index: 3;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
     object-fit: contain;
 }
 
@@ -1323,14 +1321,14 @@ ul {
 }
 
 /* Advanced Animations */
-.reveal {
+.js-enabled .reveal {
     opacity: 0;
     transform: translateY(40px) scale(0.95);
     transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
                 transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.reveal.active {
+.js-enabled .reveal.active {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
@@ -1529,6 +1527,10 @@ ul {
 
     .footer {
         padding: 3rem 0 2rem;
+    }
+    .scroll-indicator {
+        bottom: 20px;
+        font-size: 0.7rem;
     }
 }
 

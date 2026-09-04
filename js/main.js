@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('js-enabled');
     const langSelect = document.getElementById('language-select');
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
