@@ -250,6 +250,7 @@ ul {
     align-items: center;
     justify-content: center;
     padding-top: 100px;
+    padding-bottom: 80px;
     position: relative;
 }
 
@@ -1529,8 +1530,9 @@ ul {
         padding: 3rem 0 2rem;
     }
     .scroll-indicator {
-        bottom: 20px;
+        bottom: 40px;
         font-size: 0.7rem;
+        opacity: 0.7;
     }
 }
 

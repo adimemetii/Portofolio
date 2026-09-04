@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             tags: ['Corporate Web', 'Eco-friendly', 'Frontend'],
             github: 'https://github.com/adimemetii/BioPackKos',
-            demo: 'https://bipackkos.com'
+            demo: 'https://biopackkos.com'
         }
     ];
 
