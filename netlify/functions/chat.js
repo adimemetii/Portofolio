@@ -10,12 +10,25 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const messages = Array.isArray(body.messages) ? body.messages : [];
     const lang = ['en', 'sq', 'zh'].includes(body.lang) ? body.lang : 'en';
-    const apiKey = (process.env.portofolio || process.env.PORTOFOLIO || process.env.portfolio || process.env.PORTFOLIO || process.env.PORTOFOLIO_API_KEY || process.env.GROQ_API_KEY || process.env.OPENROUTER_API_KEY || '').trim();
+
+    // Try every possible variation of the name 'portofolio' and common API keys
+    const apiKey = (
+        process.env.portofolio ||
+        process.env.PORTOFOLIO ||
+        process.env.portfolio ||
+        process.env.PORTFOLIO ||
+        process.env.PORTOFOLIO_API_KEY ||
+        process.env.GROQ_API_KEY ||
+        process.env.OPENROUTER_API_KEY ||
+        ''
+    ).trim();
 
     if (!apiKey) {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: 'API Key is not configured in Netlify. Please check the environment variable name.' })
+        body: JSON.stringify({
+          error: 'CRITICAL: API Key not found. I checked for "portofolio", "PORTOFOLIO", "portfolio", etc. Please check Netlify Environment Variables.'
+        })
       };
     }
 
@@ -49,7 +62,7 @@ VERIFIED DATA:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.CEREBRAS_MODEL || process.env.GROQ_MODEL || process.env.OPENROUTER_MODEL || 'llama3.1-70b',
+        model: process.env.CEREBRAS_MODEL || 'llama3.1-8b',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.4,
         max_tokens: 150
