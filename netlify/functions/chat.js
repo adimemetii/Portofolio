@@ -10,12 +10,12 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const messages = Array.isArray(body.messages) ? body.messages : [];
     const lang = ['en', 'sq', 'zh'].includes(body.lang) ? body.lang : 'en';
-    const apiKey = (process.env.OPENROUTER_API_KEY || '').trim();
+    const apiKey = (process.env.GROQ_API_KEY || process.env.OPENROUTER_API_KEY || '').trim();
 
     if (!apiKey) {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: 'OPENROUTER_API_KEY is not configured in Netlify.' })
+        body: JSON.stringify({ error: 'API Key is not configured in Netlify.' })
       };
     }
 
@@ -42,18 +42,15 @@ VERIFIED DATA:
 - Projects: FinSightAI (AI financial analysis), MS Doors and Windows (Corporate site), BioPackKos (Eco-friendly packaging site).
 - Contact: adimemeti97@gmail.com, LinkedIn adi-memeti-880b31237, GitHub adimemetii.`;
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://adimemeti.me',
-        'X-Title': 'Adi Memeti Portfolio AI'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.OPENROUTER_MODEL || 'openrouter/auto',
+        model: process.env.GROQ_MODEL || process.env.OPENROUTER_MODEL || 'llama-3.3-70b-versatile',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
-        plugins: [{ id: 'web', max_results: 3 }],
         temperature: 0.4,
         max_tokens: 150
       })
