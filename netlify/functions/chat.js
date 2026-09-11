@@ -10,12 +10,12 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const messages = Array.isArray(body.messages) ? body.messages : [];
     const lang = ['en', 'sq', 'zh'].includes(body.lang) ? body.lang : 'en';
-    const apiKey = (process.env.GROQ_API_KEY || process.env.OPENROUTER_API_KEY || '').trim();
+    const apiKey = (process.env.portofolio || process.env.PORTOFOLIO || process.env.PORTOFOLIO_API_KEY || process.env.GROQ_API_KEY || process.env.OPENROUTER_API_KEY || '').trim();
 
     if (!apiKey) {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: 'API Key is not configured in Netlify.' })
+        body: JSON.stringify({ error: 'API Key is not configured in Netlify. Please check the environment variable name.' })
       };
     }
 
