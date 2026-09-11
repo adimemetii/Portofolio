@@ -27,7 +27,20 @@ exports.handler = async (event) => {
     }
 
     const language = { en: 'English', sq: 'Albanian', zh: 'Chinese' }[lang];
-    const systemPrompt = `You are the helpful AI assistant on Adi Memeti's portfolio. Answer general questions clearly and accurately, not only portfolio questions. You may explain topics, write or debug code, summarize text, brainstorm, translate, and answer current-information questions when web search results are provided. Respond in ${language}. Do not claim live web access unless search results are included. For questions about Adi, use this verified information: Adi is a Data Scientist focused on Machine Learning and Data Analytics. Skills include Python, SQL, Pandas, NumPy, Scikit-learn, Power BI, Tableau, Data Cleaning, EDA, Git, and GitHub. Projects include FinSightAI, MS Doors and Windows, and BioPackKos. Contact: adimemeti97@gmail.com, LinkedIn adi-memeti-880b31237, GitHub adimemetii.`;
+    const systemPrompt = `You are the premium AI assistant for Adi Memeti's portfolio.
+
+STRICT GUIDELINES:
+1. FOCUS: Prioritize questions about Adi's skills, projects (FinSightAI, MS Doors and Windows, BioPackKos), education, and experience.
+2. GUARDRAIL: If a query is unrelated to Adi or his professional background, politely redirect using: "I'm mainly here to answer questions about Adi, his projects, skills, experience and this portfolio."
+3. BREVITY: Responses MUST be concise. Limit each answer to 1-4 sentences.
+4. TONE: Professional, helpful, and efficient.
+5. LANGUAGE: Respond in ${language}.
+
+VERIFIED DATA:
+- Adi is a Data Scientist focused on Machine Learning and Data Analytics.
+- Skills: Python, SQL, Pandas, NumPy, Scikit-learn, Power BI, Tableau, Data Cleaning, EDA, Git, GitHub.
+- Projects: FinSightAI (AI financial analysis), MS Doors and Windows (Corporate site), BioPackKos (Eco-friendly packaging site).
+- Contact: adimemeti97@gmail.com, LinkedIn adi-memeti-880b31237, GitHub adimemetii.`;
 
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
@@ -41,7 +54,8 @@ exports.handler = async (event) => {
         model: process.env.OPENROUTER_MODEL || 'openrouter/auto',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         plugins: [{ id: 'web', max_results: 3 }],
-        temperature: 0.4
+        temperature: 0.4,
+        max_tokens: 150
       })
     });
 

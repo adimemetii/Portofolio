@@ -148,8 +148,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
     const clearChatButton = document.getElementById('clear-chat');
+    const chatSendBtn = document.getElementById('chat-send-btn');
+    const aiToggle = document.getElementById('ai-assistant-toggle');
+    const aiClose = document.getElementById('ai-assistant-close');
+    const aiWindow = document.getElementById('ai-assistant-window');
+
     let conversationHistory = [];
     let chatRequestInProgress = false;
+
+    // FAB Toggle functionality
+    aiToggle?.addEventListener('click', () => {
+        aiWindow?.classList.remove('hidden');
+        // Show welcome message if chat is empty
+        if (chatMessages && chatMessages.innerHTML === '') {
+            updateChatbotLanguage();
+        }
+    });
+
+    aiClose?.addEventListener('click', () => {
+        aiWindow?.classList.add('hidden');
+    });
+
+    // Send button state
+    chatInput?.addEventListener('input', () => {
+        if (chatSendBtn) {
+            chatSendBtn.disabled = !chatInput.value.trim();
+        }
+    });
 
     const chatbotSuggestions = {
         en: [
@@ -210,16 +235,21 @@ document.addEventListener('DOMContentLoaded', () => {
     async function sendChatMessage(text) {
         if (!text.trim() || chatRequestInProgress) return;
         chatRequestInProgress = true;
+        if (chatSendBtn) chatSendBtn.disabled = true;
+
         addChatMessage('user', text);
         conversationHistory.push({ role: 'user', content: text });
         chatInput.value = '';
         const typingMessage = addChatMessage('assistant', '...');
 
         try {
+            // Speed & Token Optimization: Slice history to last 8 messages
+            const slicedHistory = conversationHistory.slice(-8);
+
             const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: conversationHistory, lang: currentLang })
+                body: JSON.stringify({ messages: slicedHistory, lang: currentLang })
             });
             const responseText = await response.text();
             let data = {};
@@ -231,9 +261,11 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationHistory.push({ role: 'assistant', content: data.reply });
         } catch (error) {
             typingMessage.remove();
-            addChatMessage('assistant', error.message || 'Unable to connect to the AI service.');
+            addChatMessage('assistant', 'Sorry, I couldn\'t process that right now. Please try again.');
+            console.error('AI Error:', error);
         } finally {
             chatRequestInProgress = false;
+            if (chatSendBtn) chatSendBtn.disabled = !chatInput.value.trim();
         }
     }
 

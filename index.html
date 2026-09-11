@@ -197,31 +197,29 @@
         </div>
     </section>
 
-    <section id="ai-assistant" class="section ai-section">
-        <div class="container">
-            <div class="ai-panel reveal">
-                <div class="ai-panel-header">
-                    <div>
-                        <p class="eyebrow" data-i18n="assistant.eyebrow">AI ASSISTANT</p>
-                        <h2 data-i18n="assistant.title">Ask anything</h2>
-                        <p class="ai-panel-description" data-i18n="assistant.description">Ask general questions or learn more about Adi's work.</p>
-                    </div>
-                    <div class="ai-actions">
-                        <span class="ai-status"><span></span><span data-i18n="assistant.status">Online</span></span>
-                        <button class="clear-chat" id="clear-chat" type="button" data-i18n="assistant.clear">Clear chat</button>
-                    </div>
+    <div id="ai-assistant-container">
+        <button id="ai-assistant-toggle" class="ai-fab" aria-label="Open AI Assistant">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div id="ai-assistant-window" class="ai-window hidden">
+            <div class="ai-window-header">
+                <div class="ai-window-title">
+                    <span class="ai-status-dot"></span>
+                    <span>Adi's AI Assistant</span>
                 </div>
-                <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
-                <div class="chat-suggestions" id="chat-suggestions"></div>
-                <form class="chat-input-area" id="chat-form">
-                    <input type="text" class="chat-input" id="chat-input" data-i18n-placeholder="assistant.placeholder" placeholder="Ask a question..." autocomplete="off">
-                    <button class="chat-send" type="submit" aria-label="Send message" data-i18n-aria-label="assistant.send">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
+                <button id="ai-assistant-close" class="ai-close-btn">&times;</button>
             </div>
+            <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+            <div class="chat-suggestions" id="chat-suggestions"></div>
+            <form class="chat-input-area" id="chat-form">
+                <input type="text" class="chat-input" id="chat-input" data-i18n-placeholder="assistant.placeholder" placeholder="Ask a question..." autocomplete="off">
+                <button class="chat-send" type="submit" id="chat-send-btn" aria-label="Send message" data-i18n-aria-label="assistant.send" disabled>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+            <button id="clear-chat" class="ai-clear-btn" type="button" data-i18n="assistant.clear">Clear Chat</button>
         </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <div class="container">
