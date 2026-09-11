@@ -261,7 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationHistory.push({ role: 'assistant', content: data.reply });
         } catch (error) {
             typingMessage.remove();
-            addChatMessage('assistant', 'Sorry, I couldn\'t process that right now. Please try again.');
+            // TEMPORARY: Show the actual error to diagnose the issue
+            addChatMessage('assistant', `Error: ${error.message}`);
             console.error('AI Error:', error);
         } finally {
             chatRequestInProgress = false;
