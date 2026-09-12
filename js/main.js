@@ -203,16 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const navigationTerms = {
         '#home': ['home', 'kreu', 'ballina', '首页', '主页'],
         '#about': ['about', 'rreth', 'adi', '关于', '介绍'],
-        '#skills': ['skills', 'aftësi', 'aftësitë', 'kompetenca', '技能'],
+        '#skills': ['skills', 'aftësi', 'aftësitë', 'kompetenca', 'njohuri', '技能'],
         '#projects': ['projects', 'projekt', 'projektet', '作品', '项目'],
-        '#certifications': ['certification', 'certifications', 'certifik', '证书', '认证'],
-        '#badges': ['badges', 'badge', '徽章'],
+            '#certifications': ['certification', 'certifications', 'certifikat', 'certifkat', 'certif', 'dëshmi', '证书', '认证'],
+        '#badges': ['badges', 'badge', 'distinktiv', '徽章'],
         '#cv': ['cv', 'curriculum vitae', 'rezume', '简历'],
         '#contact': ['contact', 'kontak', '联系', '联系方式']
     };
 
     function findNavigationTarget(text) {
-        const normalized = text.toLocaleLowerCase();
+        const normalized = text
+            .toLocaleLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
         const match = Object.entries(navigationTerms).find(([, terms]) =>
             terms.some(term => normalized.includes(term))
         );
@@ -220,7 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function navigateToSection(sectionId) {
-        document.querySelector(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+        const targetSection = document.querySelector(sectionId);
+        if (!targetSection) return;
+        window.history.replaceState(null, '', sectionId);
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function addChatMessage(role, text) {
