@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const projects = [
         {
-            title: { en: 'FinSightAI (In Progress)', sq: 'FinSightAI (Në proces)', zh: 'FinSightAI (进行中)' },
+            title: { en: 'FinSightAI', sq: 'FinSightAI', zh: 'FinSightAI' },
             desc: {
                 en: 'An AI-powered financial analysis platform designed to provide deep insights into market trends and financial data using advanced machine learning models.',
                 sq: 'Një platformë analitike financiare e fuqizuar nga AI, e dizajnuar për të ofruar njohuri të thella mbi trendet e tregut dhe të dhënat financiare duke përdorur modele të avancuara të machine learning.',
