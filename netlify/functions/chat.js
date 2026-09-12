@@ -13,6 +13,7 @@ exports.handler = async (event) => {
 
     // Try every possible variation of the name 'portofolio' and common API keys
     const apiKey = (
+        process.env.GROQ_API_KEY ||
         process.env.PORTOFOLIO_API_KEY ||
         process.env.portofolio ||
         process.env.PORTOFOLIO ||
@@ -53,14 +54,14 @@ VERIFIED DATA:
 - Projects: FinSightAI (AI financial analysis), MS Doors and Windows (Corporate site), BioPackKos (Eco-friendly packaging site).
 - Contact: adimemeti97@gmail.com, LinkedIn adi-memeti-880b31237, GitHub adimemetii.`;
 
-    const response = await fetch('https://api.sambanova.ai/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.SAMBANOVA_MODEL || 'Meta-Llama-3.1-8B-Instruct',
+        model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.4,
         max_tokens: 150
