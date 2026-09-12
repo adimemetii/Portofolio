@@ -59,6 +59,16 @@ VERIFIED DATA:
   * FinSightAI: A sophisticated AI-driven financial analysis tool.
   * MS Doors and Windows: A professional corporate website.
   * BioPackKos: An innovative site for eco-friendly packaging solutions.
+- CERTIFICATIONS:
+  * Intro to Machine Learning (Kaggle)
+  * Python & Data Science (Tectigon Academy)
+  * Intermediate Machine Learning (Kaggle)
+  * Programming Fundamentals (PërProgramera)
+- PROFESSIONAL BADGES:
+  * Linux Unhatched (Cisco)
+  * Python Essentials 1 & 2 (Cisco)
+  * Generative AI Fundamentals (Databricks)
+  * Introduction to Data Science (Cisco)
 - EXPERIENCE: Significant practical experience at Tectigon Academy, where he continues to refine his skills and contribute to real-world projects.
 - CONTACT:
   * Email: adimemeti97@gmail.com
