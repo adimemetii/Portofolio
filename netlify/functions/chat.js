@@ -53,6 +53,7 @@ VERIFIED DATA:
 - Adi is a Data Scientist focused on Machine Learning and Data Analytics.
 - Skills: Python, SQL, Pandas, NumPy, Scikit-learn, Power BI, Tableau, Data Cleaning, EDA, Git, GitHub.
 - Projects: FinSightAI (AI financial analysis), MS Doors and Windows (Corporate site), BioPackKos (Eco-friendly packaging site).
+- Experience: Practical experience at Tectigon Academy, where he is currently active.
 - Contact: adimemeti97@gmail.com, LinkedIn adi-memeti-880b31237, GitHub adimemetii.`;
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
