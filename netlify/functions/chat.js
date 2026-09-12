@@ -62,7 +62,7 @@ VERIFIED DATA:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || 'llama-3.1-8b-instant',
+        model: process.env.GROQ_MODEL || 'llama3-8b-8192',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.4,
         max_tokens: 150
