@@ -1,32 +1,41 @@
 {
   "nav": {
     "home": "Kreu",
-    "about": "Rreth Me",
+    "about": "Rreth meje",
     "skills": "Aftësitë",
     "projects": "Projektet",
     "certifications": "Certifikimet",
-    "badges": "Badge-et",
+    "badges": "Distinktivët",
     "cv": "CV",
     "contact": "Kontakti"
   },
   "hero": {
     "title": "Adi Memeti",
+    "badge": "I disponueshëm për mundësi të reja",
     "subtitle": "Praktikant i Data Science",
     "description": "Praktikant i apasionuar i Data Science, i fokusuar në Machine Learning dhe Analitikën e të Dhënave për të zgjidhur probleme komplekse.",
     "cta_primary": "Shih Punën Time",
-    "cta_secondary": "Shkarko CV-në"
+    "cta_secondary": "Shkarko CV-në",
+    "scroll": "Eksploro më shumë",
+    "card_data_science": "Shkenca e të Dhënave",
+    "card_machine_learning": "Machine Learning",
+    "card_ai_enthusiast": "Entuziast i AI"
   },
   "about": {
-    "title": "Rreth Me",
-    "title_span": "Me",
+    "title": "Rreth meje",
+    "title_span": "meje",
     "description": "Jam një praktikant i Data Science me një pasion të fortë për AI dhe Machine Learning.",
-    "internship_label": "Internship aktual",
+    "core_focus_label": "Fokusi kryesor",
+    "core_focus_value": "Deep Learning, analitika parashikuese dhe arkitektura softuerike",
+    "approach_label": "Qasja",
+    "approach_value": "Kombinoj kërkimin teorik në AI me inxhinierinë e gatshme për prodhim",
+    "internship_label": "Praktika aktuale",
     "internship_title": "Praktikant i Data Science",
-    "internship_description": "Aktualisht po ndjek pjesën praktike të internship-it tim në Data Science në Tectigon Academy.",
+    "internship_description": "Aktualisht po përfundoj pjesën praktike të praktikës sime në Data Science në Tectigon Academy.",
     "internship_date": "Që nga 6 gushti · Në vazhdim"
   },
   "skills": {
-    "title": "Aftësitë Teknike",
+    "title": "Aftësitë teknike",
     "title_span": "Aftësitë",
     "categories": {
       "programming": {
@@ -46,7 +55,7 @@
         "items": ["Power BI", "Tableau", "SQL", "Pastrimi i të Dhënave", "EDA"]
       },
       "tools": {
-        "title": "Veglat",
+        "title": "Mjetet",
         "items": ["Git", "GitHub", "VS Code"]
       }
     }
@@ -56,7 +65,9 @@
     "title_span": "Projektet",
     "placeholder_desc": "Përshkrimi i projektit bazuar në implementimin teknik dhe rezultatet.",
     "view_github": "Shih në GitHub",
-    "live_demo": "Demo Live"
+    "live_demo": "Demo live",
+    "in_progress": "Në zhvillim",
+    "completed": "Përfunduar"
   },
   "certifications": {
     "title": "Certifikimet",
@@ -64,14 +75,14 @@
     "verify": "Verifiko Certifikatën"
   },
   "badges": {
-    "title": "Badge-et Profesionale",
-    "title_span": "Badge-et",
-    "verify": "Shih Badge-in"
+    "title": "Distinktivët profesionalë",
+    "title_span": "Distinktivët",
+    "verify": "Shiko distinktivin"
   },
   "cv": {
     "title": "Curriculum Vitae",
     "title_span": "Vitae",
-    "description": "Shkarkoni CV-në time profesionale në gjuhën tuaj të preferuar.",
+    "description": "Shkarko CV-në time profesionale në gjuhën që preferon.",
     "download": "Shkarko PDF",
     "view": "Shih PDF",
     "en": "CV në Anglisht",
@@ -81,7 +92,7 @@
     "title": "Na Kontaktoni",
     "title_span": "Kontakti",
     "description": "Jam gjithmonë i hapur për të diskutuar mundësi të reja, bashkëpunime ose sfida teknike.",
-    "email": "Më dërgoni Email",
+    "email": "Më dërgo email",
     "linkedin": "LinkedIn",
     "github": "GitHub"
   },
@@ -92,7 +103,9 @@
     "status": "Online",
     "placeholder": "Bëj një pyetje...",
     "send": "Dërgo mesazhin",
-    "clear": "Pastro bisedën"
+    "clear": "Pastro bisedën",
+    "open": "Hap asistentin AI",
+    "greeting": "Përshëndetje! Pyet për punën, aftësitë, projektet ose përvojën e Adit."
   },
   "footer": {
     "copyright": "© 2026 Adi Memeti. Të gjitha të drejtat e rezervuara.",

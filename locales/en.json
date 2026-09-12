@@ -11,15 +11,24 @@
   },
   "hero": {
     "title": "Adi Memeti",
+    "badge": "Available for Opportunities",
     "subtitle": "Data Science Intern",
     "description": "Passionate Data Science Intern focusing on Machine Learning and Data Analytics to solve complex problems with data-driven insights.",
     "cta_primary": "View My Work",
-    "cta_secondary": "Download CV"
+    "cta_secondary": "Download CV",
+    "scroll": "Explore more",
+    "card_data_science": "Data Science",
+    "card_machine_learning": "Machine Learning",
+    "card_ai_enthusiast": "AI Enthusiast"
   },
   "about": {
     "title": "About Me",
     "title_span": "Me",
     "description": "I am a Data Science Intern with a strong passion for AI and Machine Learning.",
+    "core_focus_label": "Core Focus",
+    "core_focus_value": "Deep Learning, Predictive Analytics, and Software Architecture",
+    "approach_label": "Approach",
+    "approach_value": "Combining theoretical AI research with production-grade engineering",
     "internship_label": "Current Internship",
     "internship_title": "Data Science Intern",
     "internship_description": "Currently completing the practical part of my Data Science internship at Tectigon Academy.",
@@ -56,7 +65,9 @@
     "title_span": "Projects",
     "placeholder_desc": "Project description based on technical implementation and results.",
     "view_github": "View on GitHub",
-    "live_demo": "Live Demo"
+    "live_demo": "Live Demo",
+    "in_progress": "In Progress",
+    "completed": "Completed"
   },
   "certifications": {
     "title": "Certifications",
@@ -87,12 +98,14 @@
   },
   "assistant": {
     "eyebrow": "AI ASSISTANT",
-    "title": "Ask anything",
+    "title": "Adi's AI Assistant",
     "description": "Ask general questions or learn more about Adi's work.",
     "status": "Online",
     "placeholder": "Ask a question...",
     "send": "Send message",
-    "clear": "Clear chat"
+    "clear": "Clear chat",
+    "open": "Open AI Assistant",
+    "greeting": "Hello! Ask me anything about Adi's work, skills, projects, or experience."
   },
   "footer": {
     "copyright": "© 2026 Adi Memeti. All rights reserved.",

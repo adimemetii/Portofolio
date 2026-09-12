@@ -122,17 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = el.getAttribute('data-i18n');
             const keys = key.split('.');
             let value = translations;
-            keys.forEach(k => {
-                value = value[k];
-            });
-            el.textContent = value;
+            keys.forEach(k => { value = value?.[k]; });
+            if (typeof value === 'string') el.textContent = value;
         });
 
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             el.placeholder = translations.assistant.placeholder;
         });
         document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
-            el.setAttribute('aria-label', translations.assistant.send);
+            const key = el.getAttribute('data-i18n-aria-label').split('.');
+            const value = key.reduce((result, part) => result?.[part], translations);
+            if (typeof value === 'string') el.setAttribute('aria-label', value);
         });
 
         renderSkills();
@@ -200,6 +200,29 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
+    const navigationTerms = {
+        '#home': ['home', 'kreu', 'ballina', '首页', '主页'],
+        '#about': ['about', 'rreth', 'adi', '关于', '介绍'],
+        '#skills': ['skills', 'aftësi', 'aftësitë', 'kompetenca', '技能'],
+        '#projects': ['projects', 'projekt', 'projektet', '作品', '项目'],
+        '#certifications': ['certification', 'certifications', 'certifik', '证书', '认证'],
+        '#badges': ['badges', 'badge', '徽章'],
+        '#cv': ['cv', 'curriculum vitae', 'rezume', '简历'],
+        '#contact': ['contact', 'kontak', '联系', '联系方式']
+    };
+
+    function findNavigationTarget(text) {
+        const normalized = text.toLocaleLowerCase();
+        const match = Object.entries(navigationTerms).find(([, terms]) =>
+            terms.some(term => normalized.includes(term))
+        );
+        return match?.[0] || null;
+    }
+
+    function navigateToSection(sectionId) {
+        document.querySelector(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
     function addChatMessage(role, text) {
         const message = document.createElement('div');
         message.className = `message ${role}`;
@@ -223,10 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         chatMessages.innerHTML = '';
         conversationHistory = [];
-        const greeting = currentLang === 'sq'
-            ? 'Përshëndetje! Më bëj çdo pyetje.'
-            : currentLang === 'zh' ? '你好！你可以问我任何问题。' : 'Hello! Ask me anything.';
-        addChatMessage('assistant', greeting);
+        addChatMessage('assistant', translations.assistant?.greeting || 'Hello! Ask me anything.');
         if (chatInput) chatInput.placeholder = translations.assistant?.placeholder || 'Ask a question...';
     }
 
@@ -234,6 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function sendChatMessage(text) {
         if (!text.trim() || chatRequestInProgress) return;
+        const requestedSection = findNavigationTarget(text);
+        if (requestedSection) navigateToSection(requestedSection);
         chatRequestInProgress = true;
         if (chatSendBtn) chatSendBtn.disabled = true;
 
@@ -263,16 +285,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let replyText = data.reply;
             // Handle Navigation tags: [NAV: #section]
-            const navMatch = replyText.match(/\[NAV: (#\w+)\]/);
+            const navMatch = replyText.match(/\[NAV: (#[\w-]+)\]/);
             if (navMatch && navMatch[1]) {
-                const sectionId = navMatch[1];
-                const targetSection = document.querySelector(sectionId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
+                navigateToSection(requestedSection || navMatch[1]);
                 // Clean the tag from the visible text
                 replyText = replyText.replace(/\[NAV: #\w+\]\s*/, '');
             }
+            if (requestedSection) replyText = replyText.replace(/\[NAV: #[\w-]+\]\s*/, '');
 
             addChatMessage('assistant', replyText);
             conversationHistory.push({ role: 'assistant', content: data.reply });
@@ -341,15 +360,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="project-info">
                     <div class="project-header">
                         <h3>${proj.title[currentLang]}</h3>
-                        <div class="project-status ${proj.title[currentLang].includes('Progress') ? 'status-progress' : 'status-completed'}">${proj.title[currentLang].includes('Progress') ? 'In Progress' : 'Completed'}</div>
+                        <div class="project-status ${proj.title[currentLang].includes('Progress') ? 'status-progress' : 'status-completed'}">${proj.title[currentLang].includes('Progress') ? translations.projects.in_progress : translations.projects.completed}</div>
                     </div>
                     <p>${proj.desc[currentLang]}</p>
                     <div class="project-tags">
                         ${proj.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                     </div>
                     <div class="project-links">
-                        <a href="${proj.github}" target="_blank" class="btn btn-small btn-secondary"><i class="fab fa-github"></i> Code</a>
-                        <a href="${proj.demo}" target="_blank" class="btn btn-small btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="${proj.github}" target="_blank" class="btn btn-small btn-secondary"><i class="fab fa-github"></i> ${translations.projects.view_github}</a>
+                        <a href="${proj.demo}" target="_blank" class="btn btn-small btn-primary"><i class="fas fa-external-link-alt"></i> ${translations.projects.live_demo}</a>
                     </div>
                 </div>
             `;

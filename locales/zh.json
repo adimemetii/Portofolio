@@ -11,15 +11,24 @@
   },
   "hero": {
     "title": "Adi Memeti",
+    "badge": "欢迎新的合作机会",
     "subtitle": "数据科学实习生",
     "description": "一名专注于机器学习和数据分析的数据科学实习生，致力于通过数据驱动的洞察来解决复杂问题。",
     "cta_primary": "查看作品",
-    "cta_secondary": "下载简历"
+    "cta_secondary": "下载简历",
+    "scroll": "探索更多",
+    "card_data_science": "数据科学",
+    "card_machine_learning": "机器学习",
+    "card_ai_enthusiast": "人工智能爱好者"
   },
   "about": {
     "title": "关于我",
     "title_span": "我",
     "description": "我是一名对人工智能和机器学习充满热情的数据科学实习生。",
+    "core_focus_label": "核心方向",
+    "core_focus_value": "深度学习、预测分析与软件架构",
+    "approach_label": "工作方式",
+    "approach_value": "将人工智能理论研究与面向生产环境的工程实践相结合",
     "internship_label": "当前实习",
     "internship_title": "数据科学实习生",
     "internship_description": "目前正在 Tectigon Academy 完成数据科学实习的实践部分。",
@@ -56,7 +65,9 @@
     "title_span": "项目",
     "placeholder_desc": "基于技术实现和结果的项目描述。",
     "view_github": "在 GitHub 上查看",
-    "live_demo": "在线演示"
+    "live_demo": "在线演示",
+    "in_progress": "进行中",
+    "completed": "已完成"
   },
   "certifications": {
     "title": "专业证书",
@@ -71,7 +82,7 @@
   "cv": {
     "title": "个人简历",
     "title_span": "简历",
-    "description": "下载您首选语言的专业简历。",
+    "description": "下载我提供的专业简历，选择你偏好的语言。",
     "download": "下载 PDF",
     "view": "查看 PDF",
     "en": "英文简历",
@@ -87,12 +98,14 @@
   },
   "assistant": {
     "eyebrow": "AI 助手",
-    "title": "随便问",
+    "title": "Adi 的 AI 助手",
     "description": "你可以提问一般问题，也可以了解 Adi 的工作。",
     "status": "在线",
     "placeholder": "请输入问题...",
     "send": "发送消息",
-    "clear": "清除对话"
+    "clear": "清除对话",
+    "open": "打开 AI 助手",
+    "greeting": "你好！欢迎询问 Adi 的工作、技能、项目或经历。"
   },
   "footer": {
     "copyright": "© 2026 Adi Memeti. 保留所有权利。",
