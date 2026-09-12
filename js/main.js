@@ -237,6 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
         chatRequestInProgress = true;
         if (chatSendBtn) chatSendBtn.disabled = true;
 
+        // Hide suggestions after first message
+        if (chatSuggestions) chatSuggestions.classList.add('hidden');
+
         addChatMessage('user', text);
         conversationHistory.push({ role: 'user', content: text });
         chatInput.value = '';
@@ -257,7 +260,21 @@ document.addEventListener('DOMContentLoaded', () => {
             typingMessage.remove();
             if (!response.ok) throw new Error(data.error || responseText || `AI service returned ${response.status}`);
             if (!data.reply) throw new Error('The AI returned an empty response.');
-            addChatMessage('assistant', data.reply);
+
+            let replyText = data.reply;
+            // Handle Navigation tags: [NAV: #section]
+            const navMatch = replyText.match(/\[NAV: (#\w+)\]/);
+            if (navMatch && navMatch[1]) {
+                const sectionId = navMatch[1];
+                const targetSection = document.querySelector(sectionId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                // Clean the tag from the visible text
+                replyText = replyText.replace(/\[NAV: #\w+\]\s*/, '');
+            }
+
+            addChatMessage('assistant', replyText);
             conversationHistory.push({ role: 'assistant', content: data.reply });
         } catch (error) {
             typingMessage.remove();
