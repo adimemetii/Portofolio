@@ -60,7 +60,7 @@ VERIFIED DATA:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.SAMBANOVA_MODEL || 'Meta-Llama-3.3-70B-Instruct',
+        model: process.env.SAMBANOVA_MODEL || 'Meta-Llama-3.1-8B-Instruct',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.4,
         max_tokens: 150
