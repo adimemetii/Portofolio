@@ -62,7 +62,7 @@ VERIFIED DATA:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || 'llama3-8b-8192',
+        model: process.env.GROQ_MODEL || 'openai/gpt-oss-120b',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.4,
         max_tokens: 150
