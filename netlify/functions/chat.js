@@ -13,13 +13,11 @@ exports.handler = async (event) => {
 
     // Try every possible variation of the name 'portofolio' and common API keys
     const apiKey = (
+        process.env.PORTOFOLIO_API_KEY ||
         process.env.portofolio ||
         process.env.PORTOFOLIO ||
         process.env.portfolio ||
         process.env.PORTFOLIO ||
-        process.env.PORTOFOLIO_API_KEY ||
-        process.env.GROQ_API_KEY ||
-        process.env.OPENROUTER_API_KEY ||
         ''
     ).trim();
 
@@ -55,14 +53,14 @@ VERIFIED DATA:
 - Projects: FinSightAI (AI financial analysis), MS Doors and Windows (Corporate site), BioPackKos (Eco-friendly packaging site).
 - Contact: adimemeti97@gmail.com, LinkedIn adi-memeti-880b31237, GitHub adimemetii.`;
 
-    const response = await fetch('https://api.cerebras.ai/v1/chat/completions', {
+    const response = await fetch('https://api.sambanova.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.CEREBRAS_MODEL || 'llama3.1-8b',
+        model: process.env.SAMBANOVA_MODEL || 'Meta-Llama-3.3-70B-Instruct',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.4,
         max_tokens: 150
