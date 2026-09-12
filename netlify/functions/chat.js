@@ -13,6 +13,7 @@ exports.handler = async (event) => {
 
     // Try every possible variation of the name 'portofolio' and common API keys
     const apiKey = (
+        process.env.groq_api_key ||
         process.env.GROQ_API_KEY ||
         process.env.PORTOFOLIO_API_KEY ||
         process.env.portofolio ||
