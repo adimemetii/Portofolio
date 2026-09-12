@@ -75,7 +75,7 @@ VERIFIED DATA:
         model: process.env.GROQ_MODEL || 'openai/gpt-oss-120b',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         temperature: 0.7,
-        max_tokens: 150
+        max_tokens: 500
       })
     });
 
