@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             demo: 'https://biopackkos.com'
         },
         {
-            title: { en: 'Cryptovision', sq: 'Cryptovision', zh: 'Cryptovision' },
+            title: { en: 'CryptoVison', sq: 'CryptoVison', zh: 'CryptoVison' },
             desc: {
                 en: 'A completed AI project by Adi Memeti, available through its live demo and GitHub source repository.',
                 sq: 'Një projekt i përfunduar i AI nga Adi Memeti, i disponueshëm përmes demos live dhe repository-t në GitHub.',

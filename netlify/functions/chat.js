@@ -60,7 +60,7 @@ VERIFIED DATA:
   * FinSightAI: A sophisticated AI-driven financial analysis tool.
   * MS Doors and Windows: A professional corporate website.
   * BioPackKos: An innovative site for eco-friendly packaging solutions.
-  * Cryptovision: A completed AI project with a live demo and public GitHub repository.
+  * CryptoVison: A completed AI project with a live demo and public GitHub repository.
 - CERTIFICATIONS:
   * Intro to Machine Learning (Kaggle)
   * Python & Data Science (Tectigon Academy)
