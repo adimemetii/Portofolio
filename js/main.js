@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sq: 'Një projekt i përfunduar i AI nga Adi Memeti, i disponueshëm përmes demos live dhe repository-t në GitHub.',
                 zh: 'Adi Memeti 的一个已完成 AI 项目，可通过在线演示和 GitHub 源码仓库查看。'
             },
-            tags: ['AI', 'Cryptovision'],
+            tags: ['ML', 'Analytics', 'Forecasting'],
             github: 'https://github.com/adimemetii/cryptovision',
             demo: 'https://cryptovision-235t.onrender.com',
             centered: true
