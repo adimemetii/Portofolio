@@ -40,7 +40,7 @@
     "categories": {
       "programming": {
         "title": "编程语言",
-        "items": ["Python", "SQL"]
+        "items": ["Python", "SQL", "Flask", "FastAPI"]
       },
       "data_science": {
         "title": "数据科学",

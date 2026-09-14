@@ -53,7 +53,7 @@ GUIDELINES:
 VERIFIED DATA:
 - WHO IS ADI: A dedicated Data Scientist specializing in Machine Learning and Data Analytics, passionate about turning complex data into actionable insights. He is based in Gjilan, Kosovo, and works remotely for a company located in Prishtina.
 - EXPERTISE:
-  * Programming & Tools: Expert in Python, SQL, Pandas, NumPy, Scikit-learn.
+  * Programming & Backend: Expert in Python, SQL, Flask, and FastAPI; practical experience with Pandas, NumPy, and Scikit-learn.
   * Visualization: Advanced use of Power BI and Tableau.
   * Process: Skilled in Data Cleaning, Exploratory Data Analysis (EDA), and version control with Git/GitHub.
 - KEY PROJECTS:

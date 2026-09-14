@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         en: [
             ['What can you help me with?', 'Capabilities'],
             ['Who is Adi Memeti?', 'About Adi'],
+            ['What backend frameworks does Adi use?', 'Flask & FastAPI'],
             ['Explain machine learning simply.', 'Machine learning'],
             ['What are the latest trends in AI?', 'AI trends'],
             ['How can I contact Adi?', 'Contact']
@@ -187,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sq: [
             ['Me çfarë mund të më ndihmosh?', 'Aftësitë'],
             ['Kush është Adi Memeti?', 'Rreth Adit'],
+            ['Cilat framework-e backend përdor Adi?', 'Flask dhe FastAPI'],
             ['Shpjego machine learning thjesht.', 'Machine learning'],
             ['Cilat janë trendet e fundit në AI?', 'Trendet e AI'],
             ['Si mund ta kontaktoj Adin?', 'Kontakti']
@@ -194,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         zh: [
             ['你可以帮助我什么？', '功能'],
             ['Adi Memeti 是谁？', '关于 Adi'],
+            ['Adi 使用哪些后端框架？', 'Flask 和 FastAPI'],
             ['请简单解释机器学习。', '机器学习'],
             ['AI 的最新趋势是什么？', 'AI 趋势'],
             ['如何联系 Adi？', '联系方式']

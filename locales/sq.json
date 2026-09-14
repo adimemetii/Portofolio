@@ -40,7 +40,7 @@
     "categories": {
       "programming": {
         "title": "Programimi",
-        "items": ["Python", "SQL"]
+        "items": ["Python", "SQL", "Flask", "FastAPI"]
       },
       "data_science": {
         "title": "Shkenca e të Dhënave",
