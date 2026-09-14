@@ -731,6 +731,10 @@ ul {
     position: relative;
 }
 
+.project-card-centered {
+    grid-column: 2;
+}
+
 .project-card:hover {
     transform: translateY(-15px) scale(1.02);
     border-color: var(--primary);
@@ -1538,6 +1542,10 @@ ul {
 
     .cert-card.cert-last {
         grid-row: auto;
+        grid-column: auto;
+    }
+
+    .project-card-centered {
         grid-column: auto;
     }
 

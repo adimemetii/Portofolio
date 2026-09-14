@@ -104,6 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: ['Corporate Web', 'Eco-friendly', 'Frontend'],
             github: 'https://github.com/adimemetii/BioPackKos',
             demo: 'https://biopackkos.com'
+        },
+        {
+            title: { en: 'Cryptovision', sq: 'Cryptovision', zh: 'Cryptovision' },
+            desc: {
+                en: 'A completed AI project by Adi Memeti, available through its live demo and GitHub source repository.',
+                sq: 'Një projekt i përfunduar i AI nga Adi Memeti, i disponueshëm përmes demos live dhe repository-t në GitHub.',
+                zh: 'Adi Memeti 的一个已完成 AI 项目，可通过在线演示和 GitHub 源码仓库查看。'
+            },
+            tags: ['AI', 'Cryptovision'],
+            github: 'https://github.com/adimemetii/cryptovision',
+            demo: 'https://cryptovision-235t.onrender.com',
+            centered: true
         }
     ];
 
@@ -359,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const gradient = gradients[index % gradients.length];
 
             const card = document.createElement('div');
-            card.className = 'project-card reveal';
+            card.className = `project-card reveal ${proj.centered ? 'project-card-centered' : ''}`;
             card.style.setProperty('--project-gradient', gradient);
             card.innerHTML = `
                 <div class="project-visual">
