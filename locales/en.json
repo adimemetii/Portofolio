@@ -22,6 +22,11 @@
     "card_ai_enthusiast": "AI Enthusiast"
   },
   "about": {
+    "education_label": "Current Education",
+    "education_title": "University of Prishtina",
+    "education_faculty": "Faculty of Electrical and Computer Engineering (FIEK)",
+    "education_program": "Program: Computer & Software Engineering",
+    "education_status": "Current",
     "title": "About Me",
     "title_span": "Me",
     "description": "I am a Data Science Intern with a strong passion for AI and Machine Learning.",

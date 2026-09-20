@@ -22,6 +22,11 @@
     "card_ai_enthusiast": "人工智能爱好者"
   },
   "about": {
+    "education_label": "当前教育",
+    "education_title": "普里什蒂纳大学",
+    "education_faculty": "电气与计算机工程学院（FIEK）",
+    "education_program": "专业：计算机与软件工程",
+    "education_status": "在读",
     "title": "关于我",
     "title_span": "我",
     "description": "我是一名对人工智能和机器学习充满热情的数据科学实习生。",

@@ -22,6 +22,11 @@
     "card_ai_enthusiast": "Entuziast i AI"
   },
   "about": {
+    "education_label": "Arsimi aktual",
+    "education_title": "Universiteti i Prishtinës",
+    "education_faculty": "Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike (FIEK)",
+    "education_program": "Programi: Inxhinieri Kompjuterike dhe Softuerike",
+    "education_status": "Aktualisht",
     "title": "Rreth meje",
     "title_span": "meje",
     "description": "Jam një praktikant i Data Science me një pasion të fortë për AI dhe Machine Learning.",

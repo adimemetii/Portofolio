@@ -190,11 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const chatbotSuggestions = {
         en: [
-            ['What can you help me with?', 'Capabilities'],
             ['Who is Adi Memeti?', 'About Adi'],
+            ['What is Adi currently studying?', 'Current education'],
             ['What backend frameworks does Adi use?', 'Flask & FastAPI'],
-            ['Explain machine learning simply.', 'Machine learning'],
-            ['What are the latest trends in AI?', 'AI trends'],
+            ['Which projects has Adi built?', 'Projects'],
+            ['What certifications does Adi have?', 'Certifications'],
             ['How can I contact Adi?', 'Contact']
         ],
         sq: [
@@ -214,6 +214,23 @@ document.addEventListener('DOMContentLoaded', () => {
             ['如何联系 Adi？', '联系方式']
         ]
     };
+
+    chatbotSuggestions.sq = [
+        ['Kush është Adi Memeti?', 'Rreth Adit'],
+        ['Çfarë po studion aktualisht Adi?', 'Arsimi aktual'],
+        ['Cilat framework-e backend përdor Adi?', 'Flask dhe FastAPI'],
+        ['Cilat projekte ka ndërtuar Adi?', 'Projektet'],
+        ['Cilat certifikime ka Adi?', 'Certifikimet'],
+        ['Si mund ta kontaktoj Adin?', 'Kontakti']
+    ];
+    chatbotSuggestions.zh = [
+        ['Adi Memeti 是谁？', '关于 Adi'],
+        ['Adi 目前学习什么？', '当前教育'],
+        ['Adi 使用哪些后端框架？', 'Flask 和 FastAPI'],
+        ['Adi 完成了哪些项目？', '项目'],
+        ['Adi 有哪些证书？', '证书'],
+        ['如何联系 Adi？', '联系方式']
+    ];
 
     const navigationTerms = {
         '#home': ['home', 'kreu', 'ballina', '首页', '主页'],
@@ -247,7 +264,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function addChatMessage(role, text) {
         const message = document.createElement('div');
         message.className = `message ${role}`;
-        message.textContent = text;
+        if (role === 'typing') {
+            message.classList.add('assistant');
+            message.setAttribute('aria-label', 'Assistant is generating a response');
+            message.innerHTML = '<span></span><span></span><span></span>';
+        } else {
+            message.textContent = text;
+        }
         chatMessages.appendChild(message);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return message;
@@ -256,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateChatbotLanguage() {
         if (!chatMessages || !chatSuggestions) return;
         chatSuggestions.innerHTML = '';
+        chatSuggestions.classList.remove('hidden');
         const suggestions = chatbotSuggestions[currentLang] || chatbotSuggestions.en;
         suggestions.forEach(([question, label]) => {
             const button = document.createElement('button');
@@ -274,23 +298,25 @@ document.addEventListener('DOMContentLoaded', () => {
     clearChatButton?.addEventListener('click', updateChatbotLanguage);
 
     async function sendChatMessage(text) {
-        if (!text.trim() || chatRequestInProgress) return;
-        const requestedSection = findNavigationTarget(text);
+        const normalizedText = text.trim().slice(0, 1600);
+        if (!normalizedText || chatRequestInProgress) return;
+        const requestedSection = findNavigationTarget(normalizedText);
         if (requestedSection) navigateToSection(requestedSection);
         chatRequestInProgress = true;
+        chatMessages?.setAttribute('aria-busy', 'true');
         if (chatSendBtn) chatSendBtn.disabled = true;
 
         // Hide suggestions after first message
         if (chatSuggestions) chatSuggestions.classList.add('hidden');
 
-        addChatMessage('user', text);
-        conversationHistory.push({ role: 'user', content: text });
-        chatInput.value = '';
-        const typingMessage = addChatMessage('assistant', '...');
+        addChatMessage('user', normalizedText);
+        conversationHistory.push({ role: 'user', content: normalizedText });
+        if (chatInput) chatInput.value = '';
+        const typingMessage = addChatMessage('typing', '');
 
         try {
-            // Speed & Token Optimization: Slice history to last 8 messages
-            const slicedHistory = conversationHistory.slice(-8);
+            // Keep requests small so the assistant stays responsive and focused.
+            const slicedHistory = conversationHistory.slice(-6);
 
             const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
@@ -300,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseText = await response.text();
             let data = {};
             try { data = JSON.parse(responseText); } catch { /* Keep the raw response below. */ }
-            typingMessage.remove();
+            typingMessage?.remove();
             if (!response.ok) throw new Error(data.error || responseText || `AI service returned ${response.status}`);
             if (!data.reply) throw new Error('The AI returned an empty response.');
 
@@ -317,13 +343,13 @@ document.addEventListener('DOMContentLoaded', () => {
             addChatMessage('assistant', replyText);
             conversationHistory.push({ role: 'assistant', content: data.reply });
         } catch (error) {
-            typingMessage.remove();
-            // TEMPORARY: Show the actual error to diagnose the issue
-            addChatMessage('assistant', `Error: ${error.message}`);
+            typingMessage?.remove();
+            addChatMessage('assistant', 'I’m unable to answer right now. Please try again in a moment.');
             console.error('AI Error:', error);
         } finally {
             chatRequestInProgress = false;
-            if (chatSendBtn) chatSendBtn.disabled = !chatInput.value.trim();
+            chatMessages?.setAttribute('aria-busy', 'false');
+            if (chatSendBtn) chatSendBtn.disabled = !(chatInput?.value.trim());
         }
     }
 
